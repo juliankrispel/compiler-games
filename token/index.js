@@ -1,0 +1,25 @@
+class Token {
+  constructor(type, value, start, end) {
+    this.type = type;
+    this.value = value;
+    this.start = start;
+    this.end = end;
+  }
+
+  getPosition() {
+    return [
+      this.start,
+      this.end,
+    ];
+  }
+
+  toString () {
+    return '' + this.value;
+  }
+
+  valueOf() {
+    return this.toString();
+  }
+}
+
+module.exports = Token;
