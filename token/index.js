@@ -13,13 +13,13 @@ class Token {
     ];
   }
 
-  toString () {
-    return '' + this.value;
+  toString() {
+    return '' + this.type;
   }
+}
 
-  valueOf() {
-    return this.toString();
-  }
+class TokenList {
+
 }
 
 module.exports = Token;

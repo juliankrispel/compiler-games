@@ -1,5 +1,6 @@
 const isRegExp = require('lodash/isRegExp');
 const isString = require('lodash/isString');
+const isNumber = require('lodash/isNumber');
 
 // Source
 //
@@ -26,12 +27,20 @@ class Source {
     return '' + this._source;
   }
 
-  valueOf() {
-    return this.toString();
-  }
-
   get cursor() {
     return this._cursor;
+  }
+
+  set cursor(num) {
+    if (!isNumber(num)) {
+      throw new Error('you can only set cursor to a number, argument is not a number ->', num);
+    }
+
+    if (num < this._cursor) {
+      throw new Error("You're not allowed to move the cursor back, it needs to advance forward");
+    }
+
+    this._cursor = num;
   }
 
   findPrevLineBreak() {
@@ -104,11 +113,6 @@ class Source {
       return this._matchString(token);
     }
     throw new Error('token must be of type string or regex, ', token);
-  }
-
-  advance(chars=1) {
-    this._cursor += chars;
-    return this.cursor;
   }
 }
 

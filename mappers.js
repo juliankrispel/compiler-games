@@ -16,14 +16,20 @@ const findToken = (type, token) => (source) => {
 
 const symbols = [
   findToken('WHITESPACE', /\s+/),
-  findToken('+', '+'),
-  findToken('-', '-'),
-  findToken('/', '/'),
-  findToken('(', '('),
-  findToken(')', ')'),
+  findToken('OPERATOR', '+'),
+  findToken('OPERATOR', '-'),
+  findToken('OPERATOR', '/'),
+  findToken('OPEN_PAREN', '('),
+  findToken('CLOSE_PAREN', ')'),
   findToken('NUMBER', /[0-9]+(?:\.[0-9]+)?/),
 ];
 
+const statements = [
+  findToken(
+    'OPEN_PAREN',
+    
+  )
+];
 //const statements = [
 //  findToken([
 //    '(',
